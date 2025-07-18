@@ -39,4 +39,20 @@ But first you can start by installing the required dependencies:
 pip install -r requirements.txt
 ```
 
-### Example
+### Quick example with gemini
+
+You can quickly test the functionality of the text processor with a sample book:
+
+First, download a sample book from Project Gutenberg using the `gutenberg_download` module. You can use the following command to download a book. The book will be downloaded
+to the directory `./quick_start_book`.
+
+```bash
+python gutenberg_download/main.py --mode online --output_dir ./quick_start_book --limit 1 --search_config ./gutenberg_download/config/quick_start_config.yaml
+```
+
+And add you gemini api key and run the command to process the downloaded book (add your gemini api key). The
+book will be processed and the output will be saved in the directory `./quick_start_processed_data`.
+
+```bash
+python text_processor/process_book.py ./quick_start_book --model-type gemini --chunk-size 28000 --api-key <GEMINI_API_KEY> --model-name gemini-2.0-flash --output ./quick_start_processed_data --prompts-config ./text_processor/config/prompts.yaml
+```
