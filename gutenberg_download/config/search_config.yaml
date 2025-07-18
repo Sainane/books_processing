@@ -1,0 +1,27 @@
+# config.yaml
+
+
+# Gutendex API search parameters (these map directly to API query parameters)
+# Uncomment and modify the ones you want to use.
+# Remember to remove the '#' at the beginning of the line to enable a parameter.
+
+# author_year_start: 1900             # Books by authors alive after this year
+# author_year_end: 1899               # Books by authors alive before this year
+
+# copyright: "false"                  # "true", "false", or "null" (use quotes for strings)
+                                    # For multiple, use: "true,false" (as a single string)
+
+# ids: "11,12,13"                     # Comma-separated Project Gutenberg ID numbers (as a single string)
+
+languages: "en"                     # Comma-separated, two-character language codes
+# languages: "fr,fi"
+
+# mime_type: "text%2Fhtml"            # MIME type starting with this value (use %2F for /)
+                                    # Note: If passing from shell, you might need to escape '%'
+
+# search: "science fiction"           # Search author names and book titles
+# search: "dickens great"
+
+sort: "popular"                     # "ascending", "descending", or "popular" (default)
+
+topic: "children"                   # Case-insensitive key-phrase in bookshelves or subjects
