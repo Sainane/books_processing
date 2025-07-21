@@ -26,7 +26,7 @@ A modular Python tool for hierarchical summarization and theme extraction from b
 ## Installation
 
 ```bash
-pip install -r requirements.txt
+pip install -r ../requirements.txt
 python -m nltk.downloader punkt
 ```
 

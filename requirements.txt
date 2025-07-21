@@ -1,6 +1,5 @@
 nltk~=3.9.1
 pydantic~=2.11.7
-yaml~=0.2.5
 pyyaml~=6.0.2
 google~=3.0.0
 protobuf~=5.29.5
@@ -8,3 +7,4 @@ ollama~=0.5.1
 together~=1.5.17
 requests~=2.32.4
 httpx~=0.28.1
+google-generativeai~=0.8.5
