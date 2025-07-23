@@ -1,19 +1,39 @@
+"""
+This module provides a class for chunking text into smaller pieces based on a specified maximum number of tokens.
+
+The Chunker class is an abstract base class that defines the interface for chunking text.
+It includes a concrete implementation, ChunkerImpl, which uses NLTK to tokenize text into sentences and words,
+
+Author: Rachel Tranchida
+Date: July 23, 2025
+Version: 1.0.0
+"""
+
 from abc import ABC, abstractmethod
-
 from nltk.tokenize import sent_tokenize, word_tokenize
-
-"""Class for chunking text into smaller pieces based on a specified maximum number of tokens."""
 
 class Chunker(ABC):
     """Abstract base class for chunking text."""
     def __init__(self, chunk_size: int):
+        """
+        Initializes the Chunker with a specified chunk size.
+        :param chunk_size: The maximum number of tokens per chunk. Must be a positive integer.
+        """
+        if not isinstance(chunk_size, int) or chunk_size <= 0:
+            raise ValueError("chunk_size must be a positive integer.")
         self.chunk_size = chunk_size
     @abstractmethod
     def chunk(self, text: str) -> list[str]:
        pass
 
+    def get_chunk_size(self) -> int:
+        """
+        Returns the maximum number of tokens per chunk.
+        :return: The chunk size as an integer.
+        """
+        return self.chunk_size
 class ChunkerImpl(Chunker):
-    """    Chunks text into smaller pieces based on a specified maximum number of tokens."""
+    """Concrete implementation of the Chunker class that splits text into chunks based on sentences."""
     def __init__(self, chunk_size: int = 1000):
         """
         Initializes the Chunker with a specified chunk size.

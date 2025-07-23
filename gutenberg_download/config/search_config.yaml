@@ -11,17 +11,17 @@
 # copyright: "false"                  # "true", "false", or "null" (use quotes for strings)
                                     # For multiple, use: "true,false" (as a single string)
 
-ids: "11,12,13"                     # Comma-separated Project Gutenberg ID numbers (as a single string)
+# ids: "11,12,13"                     # Comma-separated Project Gutenberg ID numbers (as a single string)
 
-# languages: "en"                     # Comma-separated, two-character language codes
+languages: "en"                     # Comma-separated, two-character language codes
 # languages: "fr,fi"
 
 # mime_type: "text%2Fhtml"            # MIME type starting with this value (use %2F for /)
                                     # Note: If passing from shell, you might need to escape '%'
 
-# search: "science fiction"           # Search author names and book titles
+search: "science fiction"           # Search author names and book titles
 # search: "dickens great"
 
-# sort: "popular"                     # "ascending", "descending", or "popular" (default)
+sort: "popular"                     # "ascending", "descending", or "popular" (default)
 
 # topic: "children"                   # Case-insensitive key-phrase in bookshelves or subjects

@@ -1,10 +1,18 @@
+"""
+This module provides the GutenbergDownloader class for downloading books from Project Gutenberg,
+
+It supports both online and local file retrieval modes, cleaning the text, and saving it in a structured format.
+
+
+
+Author: Rachel Tranchida
+Date: July 23, 2025
+Version: 1.0.0
+"""
+
 from abc import ABC, abstractmethod
 from urllib.parse import urlencode
-
 import httpx
-
-
-
 import gzip
 import json
 import re
@@ -20,6 +28,8 @@ from text_processor.core.schemas import ProcessorInput
 class GutenbergDownloader(ABC):
     def __init__(self, metadata_url="https://gutendex.com/"):
         self.metadata_url = metadata_url
+        self.search_params = load_yaml_config("gutenberg_download/config/search_config.yaml")
+
     @staticmethod
     def get_books_metadata(limit: int, search_params) -> list[Book]:
         """
@@ -104,16 +114,15 @@ class GutenbergDownloader(ABC):
     def get_book_text(self, book: Book) -> str:
         pass
 
-    def download_books(self, output_dir: str, limit: int, search_params_file = "search_config.yaml") -> None:
+    def download_books(self, output_dir: str, limit: int) -> None:
         """
         Downloads a book from Project Gutenberg, cleans the text, and saves it as a JSON file.
         :param limit:
-        :param search_params_file:
         :param output_dir: The directory where the cleaned book JSON file will be saved.
         """
-        search_params = load_yaml_config(search_params_file)
-        books = self.get_books_metadata(limit=limit, search_params=search_params)
-        print(books)
+
+        books = self.get_books_metadata(limit=limit, search_params=self.search_params)
+
         for book in books:
             try:
                 book_id = book.id

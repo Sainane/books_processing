@@ -24,7 +24,7 @@ class ProcessorOutput(BaseModel):
     title: str = Field(default_factory=str, description="The title of the text.")
     authors: List[Person] = Field(default_factory=list, description="List of authors of the text.")
     themes: list[str] = Field(default_factory=list, description="List of themes identified in the text")
-    gutenberg_id: Optional[int] = Field(..., description="The Gutenberg ID of the text.")
+    gutenberg_id: Optional[int] = Field(default=None, description="The Gutenberg ID of the text.")
 
 class SummarizerOutput(BaseModel):
     """

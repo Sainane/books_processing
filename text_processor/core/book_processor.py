@@ -1,3 +1,17 @@
+"""
+This module provides the BookProcessor class for processing books formatted as ProcessorInput.
+
+It takes a book's text, title, authors, and optional Gutenberg ID, and uses a Summarizer to generate a summary and identify themes and
+returns a ProcessorOutput object containing the summary, title, authors, themes, and optional Gutenberg ID.
+
+
+
+Author: Rachel Tranchida
+Date: July 23, 2025
+Version: 1.0.0
+"""
+
+
 from text_processor.core.schemas import ProcessorInput, ProcessorOutput, SummarizerOutput
 from text_processor.core.summarizer import Summarizer
 
@@ -14,7 +28,7 @@ class BookProcessor:
         """
         result = self.summarizer.summarize(book.text)
         output = SummarizerOutput.model_validate(result)
-        procesor_output = ProcessorOutput(
+        processor_output = ProcessorOutput(
             summary=output.summary,
             title=book.title,
             authors=book.authors,
@@ -22,5 +36,5 @@ class BookProcessor:
             gutenberg_id=book.gutenberg_id,
         )
         print(f"Book '{book.title}' processed successfully")
-        return  procesor_output
+        return  processor_output
 

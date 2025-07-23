@@ -1,3 +1,11 @@
+"""
+This script serves as the main entry point for downloading and processing books from Project Gutenberg.
+
+Author: Rachel Tranchida
+Date: July 23, 2025
+Version: 1.0.0
+"""
+
 import argparse
 import os
 import sys
@@ -40,13 +48,6 @@ def main():
         help="Base URL for the Gutendex API. (Applies to both online and local modes for metadata retrieval).",
     )
 
-    # Arguments specific to 'online' mode
-    parser.add_argument(
-        "--search_config",
-        type=str,
-        default="search_config.yaml",
-        help="Path to the YAML configuration file for online search parameters.",
-    )
 
     # Arguments specific to 'local' mode
     parser.add_argument(
@@ -61,13 +62,11 @@ def main():
 
     if args.mode == "online":
         print(f"Running in ONLINE mode. Fetching up to {args.limit} books.")
-        print(f"Using search parameters from: {args.search_config}")
         print(f"Using Gutendex metadata URL: {args.metadata_url}")
         downloader = GutenbergDownloaderOnline(metadata_url=args.metadata_url)
         downloader.download_books(
             output_dir=args.output_dir,
             limit=args.limit,
-            search_params_file=args.search_config,
         )
     elif args.mode == "local":
         if not args.local_data_dir:
@@ -84,7 +83,6 @@ def main():
         downloader.download_books(
             output_dir=args.output_dir,
             limit=args.limit,
-            search_params_file=args.search_config,  # This parameter is used to get metadata even in local mode
         )
     else:
         print("Invalid mode selected. Please choose 'online' or 'local'.")

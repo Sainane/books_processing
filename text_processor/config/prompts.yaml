@@ -7,9 +7,24 @@ chunk_summary: |
 
   ---
 
-  We are creating one comprehensive summary for the story by recursively merging summaries of its chunks. Now, write a summary for the excerpt provided above, make sure to include vital information related to key events, backgrounds, settings, characters, their objectives, and motivations. You must briefly introduce characters, places, and other major elements if they are being mentioned for the first time in the summary. The story may feature non-linear narratives, flashbacks, switches between alternate worlds or viewpoints, etc. Therefore, you should organize the summary so it presents a consistent and chronological narrative. Despite this recursive merging process, you need to create a summary that seems as though it is written in one go. The summary must be within {word_limit} words.
+  We are creating one comprehensive summary for the story by recursively merging summaries of its chunks. Now, write a summary for the excerpt provided above, make sure to include vital information related to key events, backgrounds, settings, characters, their objectives, and motivations. You must briefly introduce characters, places, and other major elements if they are being mentioned for the first time in the summary. The story may feature non-linear narratives, flashbacks, switches between alternate worlds or viewpoints, etc. Therefore, you should organize the summary so it presents a consistent and chronological narrative. Despite this recursive merging process, you need to create a summary that seems as though it is written in one go. The summary must be within 400 words.
 
   Summary:
+
+intermediate_summary: |
+  Below are several intermediate summaries of parts of a story:
+
+  ---
+
+  {chunk}
+
+  ---
+
+  We are creating one comprehensive summary by recursively merging summaries of its parts. Combine the summaries provided above into a single, more concise summary.
+
+  Ensure the new summary preserves all vital information from the parts, including key events, characters, and settings. The summary should be organized to present a consistent and chronological narrative. Despite this recursive merging process, you need to create a summary that seems as though it is written in one go. The summary must be within 800 words.
+
+  Combined Summary:
 
 final_summary: |
   Below are several intermediate summaries of parts of a story:
@@ -20,7 +35,7 @@ final_summary: |
 
   ---
 
-  Combine these summaries into one comprehensive summary of the entire story. Ensure vital information related to key events, backgrounds, settings, characters, their objectives, and motivations are included. Briefly introduce characters, places, and other major elements if they are being mentioned for the first time in the overall summary. Organize the summary to present a consistent and chronological narrative, even if the original story was non-linear. The final summary must appear as though it was written in one go and must be within {word_limit} words.
+  Combine these summaries into one comprehensive summary of the entire story. Ensure vital information related to key events, backgrounds, settings, characters, their objectives, and motivations are included. Briefly introduce characters, places, and other major elements if they are being mentioned for the first time in the overall summary. Organize the summary to present a consistent and chronological narrative, even if the original story was non-linear. The final summary must appear as though it was written in one go and must be within 800 words.
 
   After you write the summary, provide a list of themes or genres like : ["coming of age", "betrayal", "friendship", "supernatural"]).
 

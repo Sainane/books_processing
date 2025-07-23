@@ -1,3 +1,13 @@
+"""
+This module provides pydantic schemas used for processing to ensure data validity.
+
+It includes a function to save book data to a JSON file, and defines the structure of book metadata
+
+Author: Rachel Tranchida
+Date: July 23, 2025
+Version: 1.0.0
+"""
+
 import json
 from typing import List, Dict, Optional
 from pydantic import BaseModel, Field, HttpUrl
@@ -6,8 +16,8 @@ class Person(BaseModel):
     """
     Represents an author or translator of a book.
     """
-    birth_year: Optional[int] = Field(None, description="Year of birth, or null if unknown.")
-    death_year: Optional[int] = Field(None, description="Year of death, or null if unknown.")
+    birth_year: Optional[int] = Field(default= None, description="Year of birth, or null if unknown.")
+    death_year: Optional[int] = Field(default= None, description="Year of death, or null if unknown.")
     name: str = Field(..., description="Full name of the person.")
 
 class Book(BaseModel):
