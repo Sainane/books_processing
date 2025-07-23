@@ -1,3 +1,12 @@
+"""
+This module defines the LanguageModel abstract base class and its implementations for Gemini and Ollama models.
+
+
+Author: Rachel Tranchida
+Date: July 23, 2025
+Version: 1.0.0
+"""
+
 from abc import abstractmethod, ABC
 import google.generativeai as genai
 import ollama
@@ -17,18 +26,18 @@ class LanguageModel(ABC):
         self.structured_output = self.compatible_with_structured_output()
 
     @abstractmethod
-    def generate_content(self, prompt, response_schema: type[BaseModel] = None):
+    def generate_content(self, prompt: str, response_schema: type[BaseModel] = None) -> str:
         """
         Abstract method to generate content based on a prompt and configuration.
         :param response_schema: the Pydantic model class for structured output
         :param prompt: The input prompt for content generation.
-        :return: str: The generated text content.
+        :return: The generated text content.
         """
         pass
 
     def get_name(self):
         """
-        Abstract method to return the name of the model.
+        Method to return the name of the model.
         """
         return self._model_name
     @abstractmethod
@@ -85,7 +94,6 @@ class GeminiModel(LanguageModel):
     def get_max_tokens(self):
         """
         Returns the maximum number of tokens the Gemini model can handle.
-        This is a placeholder method and should be implemented by subclasses.
         """
         return genai.get_model(self.get_name()).input_token_limit
 
@@ -95,11 +103,9 @@ class GeminiModel(LanguageModel):
 class OllamaModel(LanguageModel):
     def __init__(self, model_name, ollama_base_url="http://localhost:11434"):
         """
-
         :param model_name: Model name
         :param ollama_base_url: url for ollama server
         """
-
         super().__init__(model_name)
         self._ollama_base_url = ollama_base_url
 
@@ -129,7 +135,7 @@ class OllamaModel(LanguageModel):
 
     def get_max_tokens(self):
         """
-        Fetches details about a specific Ollama model, including its context window.
+        Return the maximum number of tokens the Ollama model can handle.
         """
         return ollama.show(self._model_name).modelinfo.get("llama.context_length")
 

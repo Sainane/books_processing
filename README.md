@@ -84,7 +84,6 @@ python download_books.py --help
 To download books online you can use the following command. This will download books metadata from the Gutendex API, then fetch the raw text files from Project Gutenberg, clean them, and save them as JSON files in the specified output directory.
 
 #### Example
-```bash
 The downloaded books will be cleaned and saved as JSON files, ready for processing in the next step.
 ```bash
 python download_books.py --mode online --output_dir ./books_to_process --limit 1
@@ -108,10 +107,9 @@ Where `{id_1}`, `{id_2}`, etc. are the Gutenberg IDs of the books. The `pg{id}.t
 The txt-files can be downloaded directly from the Project Gutenberg website : https://www.gutenberg.org/cache/epub/feeds/
 
 #### Example
-```bash
 The downloaded books will be cleaned and saved as JSON files, ready for processing in the next step.
 ```bash
-python download_books.py --mode local --output_dir ./books_to_process --limit 1 --local_data_dir <LOCAL_DATA_DIR>
+python download_books.py --mode local --output_dir ./books_to_process --limit 1 --local_data_dir <<LOCAL_DATA_DIR>>
 ```
 
 ### Search Configuration (`gutenberg_download/config/search_config.yaml`)
@@ -146,7 +144,7 @@ To use the Google Gemini API, you need to have an API key. To obtain one, follow
 ```bash
 python process_books.py data/example_books \
   --model-type gemini \
-  --api-key AIzaSyCMicWlikSjJnD2bwF0zT4hwnDShlWxunk \
+  --api-key <<API_KEY>> \
   --model-name gemini-2.0-flash-lite \
   --chunk-size 28000 \
   --output ./example_processed_books 

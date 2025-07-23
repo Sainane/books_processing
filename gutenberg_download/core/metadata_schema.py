@@ -1,7 +1,7 @@
 """
 This module provides pydantic schemas used for processing to ensure data validity.
 
-It includes a function to save book data to a JSON file, and defines the structure of book metadata
+It includes a function to save book data to a JSON file, and defines the structure of book metadata returned by the Gutendex API.
 
 Author: Rachel Tranchida
 Date: July 23, 2025

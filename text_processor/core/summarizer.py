@@ -1,3 +1,11 @@
+"""
+The Summarizer module provides an abstract base class for summarization tasks and a concrete implementation for hierarchical summarization.
+
+Author: Rachel Tranchida
+Date: July 23, 2025
+Version: 1.0.0
+"""
+
 import json
 import re
 from abc import ABC, abstractmethod
@@ -48,6 +56,10 @@ class Summarizer(ABC):
 
 
 class HierarchicalSummarizer(Summarizer):
+    """
+    HierarchicalSummarizer is a concrete implementation of the Summarizer class that performs hierarchical summarization.
+    It divides the input text into smaller chunks, generates intermediate summaries for each chunk, and then combines these summaries into a final summary, and list of themes.
+    """
     def __init__(self, model: LanguageModel, chunker: Chunker):
         """
         Initializes the HierarchicalSummarizer with a language model, chunker, prompts configuration file, and summary length.

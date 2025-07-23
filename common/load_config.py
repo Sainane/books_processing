@@ -1,7 +1,17 @@
+
+"""
+This module provides functionality to load a YAML configuration file.
+
+Author: Rachel Tranchida
+Date: July 23, 2025
+Version: 1.0.0
+"""
+
 import yaml
 import os
 
-def load_yaml_config(filepath) -> dict:
+
+def load_yaml_config(filepath: str) -> dict:
     """
     Loads a YAML configuration file and returns its content as a dictionary.
     :param filepath:  Path to the YAML file.

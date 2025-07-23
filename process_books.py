@@ -1,3 +1,11 @@
+"""
+This script processes book data using hierarchical summarization with Gemini or Ollama models.
+
+Author: Rachel Tranchida
+Date: July 23, 2025
+Version: 1.0.0
+"""
+
 import gzip
 import json
 import argparse
