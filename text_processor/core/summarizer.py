@@ -96,7 +96,12 @@ class HierarchicalSummarizer(Summarizer):
         final_prompt = self.prompts.get("final_summary").format(
             summaries=combined_intermediate_summaries,
         )
-        json_output = self.model.generate_content(prompt=final_prompt, response_schema=SummarizerOutput)
+        if not self.model.structured_output:
+            final_prompt += "\n\nPlease respond in the following format:\n" + str(SummarizerOutput(summary="Summary of the book", themes=["theme_1", "theme_2"]).model_dump(mode='json'))
+            response_format = None
+        else:
+            response_format = SummarizerOutput
+        json_output = self.model.generate_content(prompt=final_prompt, response_schema=response_format)
         print("Final summary generated successfully.")
         return self.parse_json_output(json_output)
 

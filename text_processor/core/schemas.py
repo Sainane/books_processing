@@ -30,8 +30,8 @@ class SummarizerOutput(BaseModel):
     """
     Represents the output of a summarization operation.
     """
-    summary: str = Field(default_factory=str, frozen=True,description="The summarization output.")
-    themes: list[str] = Field(default_factory=list, frozen=True, description="List of themes identified in the text")
+    summary: str = Field(..., frozen=True,description="The summarization output.")
+    themes: list[str] = Field(..., frozen=True, description="List of themes identified in the text")
 
 
     def __repr__(self):

@@ -156,7 +156,8 @@ This project also supports any model hosted locally via Ollama.
 
 Warning : Running large models locally requires significant computational resources, including a powerful GPU with sufficient VRAM. The recommended model for this project is Llama 3.1, which is available on Ollama.
 Depending on your hardware, processing large books may take a long time. You may benefit from using smaller chunk sizes (e.g., 4096 or 2048) to reduce memory usage and processing time, but this may affect the quality of the summaries.
-It's also recommended to use a model that can handle long contexts (at the very least 8K tokens), such as Llama 3.1.
+It's also recommended to use a model that can handle long contexts (ideally at least 32K tokens), such as Llama 3
+The result is not guaranteed to be the same as with the Gemini API or another big model, but it can still produce good results.
 
 To install and run Ollama, follow these steps:
 
@@ -170,10 +171,10 @@ To install and run Ollama, follow these steps:
     ```bash
     ollama serve
     ```
-3.  **Pull a model** (e.g., Llama 3.1):
+3.  **Pull a model** (e.g., llama3):
 
     ```bash
-    ollama pull llama3.1
+    ollama pull llama3
     ```
     
 Ensure the Ollama server is running before executing the script.
@@ -181,9 +182,9 @@ Ensure the Ollama server is running before executing the script.
 ```bash
 
 python process_books.py data/example_books --model-type ollama \
-  --model-name llama3.1 \
-  --chunk-size 8096 \
-  --output ./processed_books_ollama 
+  --model-name "llama3" \
+  --chunk-size 16000 \
+  --output ./example_processed_books 
 ```
 
 

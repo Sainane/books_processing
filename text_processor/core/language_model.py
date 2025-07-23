@@ -79,8 +79,6 @@ class GeminiModel(LanguageModel):
             if self.structured_output:
                 gen_config.response_schema = response_schema
                 gen_config.response_mime_type = "application/json"
-            else:
-                prompt += "\n\nPlease respond in the following format:\n" + str((response_schema().model_dump_json()))
         response = self._model.generate_content(prompt, generation_config=gen_config)
 
         return response.text
@@ -119,9 +117,8 @@ class OllamaModel(LanguageModel):
         """
 
         if response_schema:
-            response = ollama.generate(model=self._model_name, format=response_schema.model_json_schema(), prompt=prompt, )
+            response = ollama.generate(model=self._model_name, format=response_schema.model_json_schema(), prompt=prompt)
         else:
-            prompt += "\n\nPlease respond in the following format:\n" + str((response_schema().model_dump_json() if response_schema else "text"))
             response = ollama.generate(model=self._model_name, prompt=prompt)
 
         return response['response']
@@ -137,7 +134,11 @@ class OllamaModel(LanguageModel):
         """
         Return the maximum number of tokens the Ollama model can handle.
         """
-        return ollama.show(self._model_name).modelinfo.get("llama.context_length")
+        model_info = ollama.show(self.get_name()).modelinfo
+        arch_name = model_info.get("general.architecture")
+        return model_info.get(f"{arch_name}.context_length")
+
+
 
     def compatible_with_structured_output(self):
         """
